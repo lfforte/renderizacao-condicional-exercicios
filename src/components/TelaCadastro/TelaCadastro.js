@@ -1,43 +1,47 @@
-import { Form, FormContainer, Input, StyledLabel, SendButton, BackToLoginButton } from "./styled";
+import {
+  Form,
+  FormContainer,
+  Input,
+  StyledLabel,
+  SendButton,
+  BackToLoginButton
+} from "./styled";
 
 function TelaCadastro(props) {
   const cadastrar = () => {
     // fluxo de cadastro (ainda veremos)
-    props.mudarTela("TelaPrincipal")
-  }
+    props.mudarTela("TelaPrincipal");
+  };
 
   const mostrarTelaLogin = () => {
-    props.mudarTela("TelaLogin")
-  }
+    props.mudarTela("TelaLogin");
+  };
 
   return (
     <FormContainer>
       <h1>Cadastro </h1>
 
       <Form>
-        <StyledLabel htmlFor="titulo">
-          Nome:
-          <Input id="titulo" />
-        </StyledLabel>
+        <StyledLabel htmlFor="name"> Nome: </StyledLabel>
+        <Input id="name" />
 
-        <StyledLabel htmlFor="foto">
-          E-mail:
-          <Input id="foto" />
-        </StyledLabel>
+        <StyledLabel htmlFor="email"> E-mail </StyledLabel>
+        <Input id="email" />
 
-        <StyledLabel htmlFor="descricao">
-          Senha:
-          <Input id="descricao" />
-        </StyledLabel>
+        <StyledLabel htmlFor="password"> Senha: </StyledLabel>
+        <Input id="password" />
 
-        <StyledLabel htmlFor="descricao">
-          Confirmação da senha:
-          <Input id="descricao" />
+        <StyledLabel htmlFor="password-confirm">
+          {" "}
+          Confirmação da senha:{" "}
         </StyledLabel>
+        <Input id="password-confirm" />
 
         <SendButton onClick={cadastrar}>Cadastrar</SendButton>
 
-        <BackToLoginButton onClick={mostrarTelaLogin}>Já possuo cadastro</BackToLoginButton>
+        <BackToLoginButton onClick={mostrarTelaLogin}>
+          Já possuo cadastro
+        </BackToLoginButton>
       </Form>
     </FormContainer>
   );
