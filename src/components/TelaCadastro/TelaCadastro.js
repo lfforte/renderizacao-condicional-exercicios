@@ -7,29 +7,30 @@ import {
   BackToLoginButton
 } from "./styled";
 
-function TelaCadastro(props) {
+function TelaCadastro({ mudarTela, nome, cadastraNome, email, cadastraEmail, senha, cadastraSenha, gravaDados, dadosCadastrado }) {
   const cadastrar = () => {
     // fluxo de cadastro (ainda veremos)
-    props.mudarTela("TelaPrincipal");
+    mudarTela("TelaCadastroEndereco");
+    console.log(dadosCadastrado);
   };
 
   const mostrarTelaLogin = () => {
-    props.mudarTela("TelaLogin");
+    mudarTela("TelaLogin");
   };
 
   return (
     <FormContainer>
       <h1>Cadastro </h1>
 
-      <Form>
+      <Form onSubmit={gravaDados}>
         <StyledLabel htmlFor="name"> Nome: </StyledLabel>
-        <Input id="name" />
+        <Input id="name" onChange={cadastraNome} value={nome} />
 
         <StyledLabel htmlFor="email"> E-mail </StyledLabel>
-        <Input id="email" />
+        <Input id="email" onChange={cadastraEmail} value={email} />
 
         <StyledLabel htmlFor="password"> Senha: </StyledLabel>
-        <Input id="password" />
+        <Input id="password" onChange={cadastraSenha} value={senha} />
 
         <StyledLabel htmlFor="password-confirm">
           {" "}
@@ -37,7 +38,7 @@ function TelaCadastro(props) {
         </StyledLabel>
         <Input id="password-confirm" />
 
-        <SendButton onClick={cadastrar}>Cadastrar</SendButton>
+        <SendButton onClick={cadastrar}>Cadastrar Endereço</SendButton>
 
         <BackToLoginButton onClick={mostrarTelaLogin}>
           Já possuo cadastro
