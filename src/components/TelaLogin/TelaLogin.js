@@ -7,14 +7,16 @@ import {
   RegisterButton
 } from "./styled";
 
-function TelaLogin(props) {
+function TelaLogin({ mudarTela, senha, cadastraSenha, loginUser, fazerLogin, dadosCadastrado }) {
+
   const login = () => {
     // fluxo de login (ainda veremos)
-    props.mudarTela("TelaPrincipal");
+    mudarTela("TelaPrincipal");
+    console.log(dadosCadastrado);
   };
 
   const mostrarTelaCadastro = () => {
-    props.mudarTela("TelaCadastro");
+    mudarTela("TelaCadastro");
   };
 
   return (
@@ -23,10 +25,10 @@ function TelaLogin(props) {
 
       <Form>
         <StyledLabel htmlFor="email"> E-mail: </StyledLabel>
-        <Input htmlFor="email" />
+        <Input htmlFor="email" onChange={fazerLogin} value={loginUser} />
 
         <StyledLabel htmlFor="password">Senha: </StyledLabel>
-        <Input id="password" type={"password"} />
+        <Input id="password" type={"password"} onChange={cadastraSenha} value={senha} />
 
         <SendButton onClick={login}>Entrar</SendButton>
 
